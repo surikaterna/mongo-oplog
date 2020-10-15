@@ -40,19 +40,16 @@ module.exports = (uri, options = {}) => {
   let ts = since || 0
   uri = uri || MONGO_URI
 
-  if (typeof uri !== 'string') {
-    if (uri && uri.db) {
-      client = uri
-      db = client.db()
-      connected = true
-    } else {
-      throw new Error('Invalid mongo db.')
-    }
+  if (typeof uri !== 'string' && uri.databaseName) {
+    db = uri
+    connected = true
+  } else {
+    throw new Error('Invalid mongo db.')
   }
 
   async function connect() {
     if (connected) return db
-    client = await MongoClient.connect(uri, opts)
+    client = await MongoClient.connect(uri, { ...opts, useUnifiedTopology: true })
     db = client.db()
     connected = true
   }
