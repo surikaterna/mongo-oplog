@@ -1,5 +1,5 @@
 {
-  "name": "mongo-oplog",
+  "name": "surikat-mongo-oplog",
   "version": "2.2.0",
   "description": "Watch mongodb oplog in a simple way",
   "author": "Jonathan Brumley <cayasso@gmail.com>",
@@ -8,7 +8,7 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "test": "xo && mocha",
-    "build": "npm run clean && ./node_modules/.bin/babel src -d lib && cp src/index.d.ts lib/",
+    "build": "npm run clean && babel src -d lib && cp src/index.d.ts lib/",
     "prepare": "npm run build",
     "clean": "rm -rf lib/"
   },
@@ -29,7 +29,7 @@
   "dependencies": {
     "debug": "^3.1.0",
     "eventemitter3": "^2.0.3",
-    "mongodb": "^3.3.3"
+    "mongodb": "^3.6.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
